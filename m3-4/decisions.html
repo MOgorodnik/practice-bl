@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>M 3-4. Decision.</title>
+    <style>details:not(:first-child){border-top: 1px solid #000;}summary{font-size: 18px;}pre{background: #e5e5e5;}</style>
+</head>
+<body>
+   <details>
+      <summary>Exercise 1</summary>
+      <pre>
+      user.mood = 'happy'
+      user.hobby = 'skydiving'
+      user.premium = !true
+
+      for(const key of Object.keys(user)){
+         console.log(`${key}:${user[key]}`)
+      }
+
+      for (const [k, v] of Object.entries(user)) {
+         console.log(k, v);
+      }
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 2</summary>
+      <pre>
+      let total = 0
+      for(const value of Object.values(salaries)){
+       total += value
+      }
+      console.log(total);
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 3</summary>
+      <pre>
+      function calcTotalCost (stones, stoneName) {
+         for (const stone of stones) {
+            if (stone["name"] === stoneName) {
+               return stone["cost"] * stone["quantity"]
+            }
+         }
+      }
+
+      console.log(calcTotalCost(stones, "Сапфір"));
+      console.log(calcTotalCost(stones, "Смарагд"));
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 4</summary>
+      <pre>
+      const calculator = {
+         read(a, b) {
+            this.val1 = a;
+            this.val2 = b;
+            return this
+         },
+         sum() {
+            console.log(!this.val1 || !this.val2 ? false : this.val1 + this.val2);
+            return this
+         },
+         mult() {
+            return !this.val1 || !this.val2 ? false : this.val1 * this.val2;
+         },
+      };
+
+      console.log(calculator.read(2,3).sum().mult());
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 5</summary>
+      <pre>
+         5.1
+         const updateObject = (obj, removeKey) => {
+           if (removeKey in obj && obj.hasOwnProperty(removeKey)) {
+             const newObj = Object(obj);
+             delete newObj[removeKey];
+              return newObj;
+           }
+            return obj;
+         };
+          
+         console.log(updateObject({a: 1, b: 2}, 'b'));
+         5.2
+         const updateObject = (obj, ...removeKeys) => {
+          let newObj = Object(obj);
+          
+          // for (const item of removeKeys) {
+          //   if (newObj.hasOwnProperty(item)) {
+          //     delete newObj[item];
+          //   }
+          // }
+          for (const key of Object.keys(obj)) {
+            if (removeKeys.includes(key)) {
+              delete newObj[key];
+            }
+          }
+        
+          return newObj;
+        };
+        
+        const res = updateObject({a: 1, b: 2, c: 3}, 'b', 'a')
+        
+        console.log(11, res);
+
+         ======
+         // const animal = {
+          //   legs: 4,
+          //   b: 'class'
+          // };
+          // const dog = Object.create(animal);
+          // dog.a = 1;
+          // dog.b = 'instance';
+          // console.log('dog', dog);
+          
+          // const updateObject = (obj, removeKey) => {
+          //   console.log(111, obj, removeKey);
+          
+          //   const newObj = Object(obj)
+          //   console.log(222, newObj);
+          
+          //   if (newObj.hasOwnProperty(removeKey)) {
+          //     console.log(11, newObj);
+          //     delete newObj[removeKey];
+          //     console.log(22, newObj);
+          //   } 
+          //   return newObj
+          // }
+          // const dog2 = updateObject(dog, 'b')
+          
+          // console.log('dog2', dog2);
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 6</summary>
+      <pre>
+         function changeObject(obj) {
+            const newObj = Object.entries(obj);
+            console.log(newObj);
+            // https://question-it.com/questions/245501/kak-razbit-obekt-js-na-massiv-par-kljuch-znachenie
+         }
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 7</summary>
+      <pre>
+         const account = {
+            _balance: 0,
+        
+            _curID: 0,
+        
+            _transactions: [],
+        
+            createTransaction(type, amount, transactionStatus) {
+              return {
+                id: this._curID++,
+                type,
+                amount,
+                transactionStatus,
+              };
+            },
+        
+            deposit(amount) {
+              this._balance += amount
+              this._transactions.push(this.createTransaction(Transaction.DEPOSIT, amount, true))
+            },
+        
+            withdraw(amount) {
+              if (amount > this._balance) {
+                console.log('Your balance is to low. The transaction has been declined.')
+                this._transactions.push(this.createTransaction(Transaction.WITHDRAW, amount, false))
+               } else{
+                this._balance -= amount
+                this._transactions.push(this.createTransaction(Transaction.WITHDRAW, amount, true))
+               }
+            },
+        
+            getBalance() {
+              return `You balnce now is equal ${this._balance}`
+            },
+        
+            getTransactionDetails(id) {
+              const item = this._transactions.find(item => item.id === id)
+              return item ? item : 'The transaction with this ID did not find.'
+            },
+        
+            getTransactionType(type) {
+               return this._transactions.reduce((total, trunsaction) => {
+                 if (trunsaction.type === type && trunsaction.transactionStatus) {
+                   return total + trunsaction.amount
+                 } else {
+                   return total
+                 }
+               }, 0)
+            },
+        };
+          
+        console.table(account);
+        
+        account.deposit(11)
+        account.deposit(201)
+        console.log(account._balance, account._transactions);
+        
+        account.withdraw(1)
+        console.log(account._balance, account._transactions);
+        
+        account.withdraw(100)
+        
+        console.log(account._balance, account._transactions);
+        
+        console.log(account.getBalance());
+        console.table(account.getTransactionDetails(10));
+        console.log(account.getTransactionType(Transaction.DEPOSIT));
+        console.log(account.getTransactionType(Transaction.WITHDRAW));
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 8</summary>
+      <pre>
+         // Task 1
+
+// Отримать масив імен всіх юзерів (поле name).
+// console.log(getUserNames(usersData))
+// [ 'Moore Hensley', 'Sharlene Bush', 'Ross Vazquez', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony' ]
+
+const getUserNames = users.reduce((allUsersName, user) => {
+    allUsersName.push(user.name)
+    return allUsersName
+}, [])
+
+console.log(getUserNames);
+
+// Task 2
+
+// Отримать масив об`єктiв юзерів за кольором очей (поле - eyeColor).
+// console.log(getUsersWithEyeColor(users, 'blue')); 
+// [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
+
+const getUsersWithEyeColor = (data, color) => {
+    return data.filter((item) => item.eyeColor === color)
+}
+
+console.table(getUsersWithEyeColor(users, 'blue'), ['name', 'eyeColor']);
+
+// Task 3
+
+// Отримать масив імен юзерів по статі (стать - gender)
+// console.log(getUsersWithGender(users, 'male'));
+// [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
+
+const getUsersByGender = (data, gen) => {
+    return data.reduce((thisGender, current) => {
+        if (current.gender === gen) {
+            thisGender.push(current.name)
+        }
+        return thisGender
+    }, [])
+}
+console.table(getUsersByGender(users, 'male'))
+
+// Task 4
+
+// Отримать масив неактивних юзерів (поле - isActive).
+// console.log(getInactiveUsers(users)); 
+// [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
+
+const getInactiveUsers = data => {
+    return data.filter(item => !item.isActive)
+}
+console.table(getInactiveUsers(users), ['name', 'isActive']); 
+
+// Task 5
+
+// Отримать юзера (не масив) за email (поле email, унікальний).
+// console.log(getUserWithEmail(users, 'shereeanthony@kog.com'));
+// {объект пользователя Sheree Anthony}
+// console.log(getUserWithEmail(users, 'elmahead@omatom.com'));
+// {объект пользователя Elma Head}
+
+// const getUserWithEmail = (data, email) => {
+//     return data.find(item => item.email === email)
+// }
+// console.table(getUserWithEmail(users, 'shereeanthony@kog.com').name);
+// console.table(getUserWithEmail(users, 'elmahead@omatom.com').name);
+
+// Task 6
+
+// Отримать масив юзерів віком від min до max
+
+// console.log( getUsersWithAge( users, 20, 30 ) );
+// [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
+// console.log( getUsersWithAge( users, 30, 40 ) );
+// [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
+
+// const getUsersWithAge = (data, min, max ) => {
+//     return data.filter(item => item.age > min && item.age < max )
+// }
+// console.table( getUsersWithAge( users, 20, 30 ), ['name', 'age']);
+// console.table( getUsersWithAge( users, 30, 40 ), ['name', 'age']);
+
+// Task 7
+
+// Отримать загальний баланс (поле balance) всіх юзерів.
+// console.log(calculateTotalBalance(users));
+// 20916
+
+// const calculateTotalBalance = data => {
+//     return data.reduce((total, current) => {
+//         return total += current.balance
+//     }, 0)
+// }
+// console.log(calculateTotalBalance(users));
+
+// Task 8
+
+// Масив імен всіх користувачів у яких є друг з заданим іменем.
+// console.log(getUsersWithFriend(users, 'Briana Decker'));
+// [ 'Sharlene Bush', 'Sheree Anthony' ]
+// console.log(getUsersWithFriend(users, 'Goldie Gentry'));
+// [ 'Elma Head', 'Sheree Anthony' ]
+
+// const getUsersWithFriend = (data, friendName) => {
+//     return data.filter(item => item.friends.includes(friendName)).map(item => item.name)
+// }
+// console.log(getUsersWithFriend(users, 'Briana Decker'));
+// console.log(getUsersWithFriend(users, 'Goldie Gentry'));
+
+// Task 9
+
+// Масив імен (поле - name) людей, відсортованих в залежності від кількості їх друзів (поле - friends)
+// console.log(getNamesSortedByFriendsCount(users));
+// [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
+
+const getNamesSortedByFriendsCount = data => {
+    return [...data].sort((a, b) => a.friends.length - b.friends.length)
+}
+console.table(getNamesSortedByFriendsCount(users), ['name', 'friends']);
+
+// Task 10
+
+// Отримати масив всіх навичок всіх юзерів (поле - skills), при цьому не має буть
+// повторяючихся умінь і вивести їх в алфавітному порядку.
+// console.log(getSortedUniqueSkills(users));
+// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
+
+const getSortedUniqueSkills = data => {
+    // return data.flatMap(item => item.skills)
+    // .filter((item, index, arr )=> arr.indexOf(item) === index)
+    // .sort((a, b) => a.localeCompare(b))
+
+    const res = data.flatMap(item => item.skills)
+    .sort((a, b) => a.localeCompare(b))
+    return [...new Set(res)]
+}
+console.log(getSortedUniqueSkills(users));
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 9</summary>
+      <pre>
+         let emp = '';
+         for (let key in data)
+           if (!(data[key] <= data[emp]))
+             emp = key;
+         return emp;
+
+         // Used reduce method 
+         const arr = Object.entries(data)
+         return arr.reduce((best, current) => {
+             // console.log(best, current);
+             // console.log(best[1], current[1]);
+             if (best[0][1] < current[1]) {
+                 best[0] = current
+             }
+             return best
+         }, [arr[0]])[0][0]
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 10</summary>
+      <pre>
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 11</summary>
+      <pre>
+      </pre>
+   </details>
+   <details>
+      <summary>Exercise 11</summary>
+      <pre>
+      </pre>
+   </details>
+</body>
+</html>

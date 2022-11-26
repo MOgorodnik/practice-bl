@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Decision: Task 11</title>
+</head>
+<body>
+    <a href="index.html">Back</a><br>
+    <h2>Task 11</h2>
+    <pre>
+        v1 function constructor
+        const User = function (userObj) {
+            const { userName, age, numbersOfPost } = userObj;
+            console.log('🐱‍👤👀: User -> typeof this', typeof this);
+            this.username = userName;
+            this.age = age;
+            this.numbersOfPost = numbersOfPost;
+          
+            // this.getInfo = function () {
+            //   console.log(
+            //     `Користувачу ${this.username} ${this.age} років, в нього ${this.numbersOfPost} публікацій.`
+            //   );
+            // };
+          };
+          
+          User.prototype.getInfo = function () {
+            console.log(
+              `Користувачу ${this.username} ${this.age} років, в нього ${this.numbersOfPost} публікацій.`
+            );
+          };
+          
+          
+          v2 Class
+          class User {
+            constructor(userObj) {
+              const { userName, age, numbersOfPost } = userObj;
+              console.log('🐱‍👤👀: User -> typeof this', typeof this);
+              this.username = userName;
+              this.age = age;
+              this.numbersOfPost = numbersOfPost;
+          
+              // this.getInfo = function () {
+              //   console.log(
+              //     `Користувачу ${this.username} ${this.age} років, в нього ${this.numbersOfPost} публікацій.`
+              //   );
+              // };
+            }
+            getInfo() {
+              console.log(`Користувачу ${this.username} ${this.age} років, в нього ${this.numbersOfPost} публікацій.`);
+            }
+          }
+          
+          const polly = new User({ userName: 'Polly', age: 30, numbersOfPost: 15 });
+          
+          console.table(polly);
+          polly.getInfo();
+    </pre>
+</body>
+</html>

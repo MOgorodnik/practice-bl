@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 13</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 13</h2>
+    <pre>
+        class Client {
+            #login;
+            #email;
+         
+            constructor(login, email) {
+                this.#login = login;
+                this.#email = email;
+            }
+         
+            get getClientData() {
+              return {
+                login: this.#login,
+                email: this.#email,
+              };
+            }
+         
+            set changeEmail(newEmail) {
+                this.#email = newEmail;
+            }
+        }
+        
+        const client = new Client("mango", "mango@gmail.com");
+        client.changeEmail = 'mango@gmail.com';
+         
+        console.log(client.getClientData.login);
+        console.log(client.getClientData.email);
+         
+
+        v2 Патерн «Об'єкт параметрів»
+        https://www.edu.goit.global/uk/learn/6541013/6531520/6531528/textbook
+        //  const client2 = new Client({email: "bob@gmail.com", login: "Bob"});
+        //  console.log(client2.getClientData.login);
+        //  console.log(client2.getClientData.email);
+    </pre>
+  </body>
+</html>

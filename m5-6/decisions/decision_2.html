@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Decision: Task 2</title>
+</head>
+<body>
+    <a href="index.html">Back</a><br>
+    <h2>Task 2</h2>
+    <pre>
+        const makeProduct = (name, price, callback) => {
+            const product = {
+              name,
+              price,
+              id: Math.random(),
+            };
+            // product.id = Math.random()
+            // product.id = (new Date()).getTime()
+            product.id = self.crypto.randomUUID()
+            return callback(product);
+          }
+
+          const showProduct = product => console.table(product);
+          
+          makeProduct("Fish", 350, showProduct)
+    </pre>
+</body>
+</html>

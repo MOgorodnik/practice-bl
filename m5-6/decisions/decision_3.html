@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 3</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 3</h2>
+    <pre>
+        // ++++++++++++++++++++++++++++++++++++++++++
+        const makeShef = function (name) {
+            /*
+            * Параметр name це локальна змінна для функції makeShef.
+            * Це означає, що вона буде доступна функції makeDish через замикання.
+            */
+            return function makeDish(dish) {
+                console.log(`${name} is cooking ${dish}`);
+            };
+        };
+        // ++++++++++++++++++++++++++++++++++++++++++
+        
+        
+        const makeShef = shefName => {
+          return dish => {
+            console.log(`${shefName} is cooking ${dish}`);
+          };
+        }
+        
+        const tom = makeShef("Tom");
+        tom("apple pie"); // Tom is cooking apple pie
+        tom("beef stew"); // Tom is cooking beef stew
+        
+        const poly = makeShef("Poly");
+        poly("pancakes"); // Poly is cooking pancakes
+        poly("eggs and bacon"); // Poly is cooking eggs and bacon
+    </pre>
+  </body>
+</html>

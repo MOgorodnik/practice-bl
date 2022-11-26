@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 14</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 4</h2>
+    <pre>
+        class Notes {
+            static Priority() {
+              return {
+                HIGHT: 'hight',
+                LOW: 'low',
+              };
+            }
+          
+            constructor() {
+              this.items = [
+                /*{text: 'sss', priority: 'sss'}*/
+              ];
+            }
+          
+            addNote(note) {
+              return this.items.push(note);
+            }
+          
+            removeNote(noteName) {
+              const index = this.items.findIndex((item) => item.text === noteName);
+              if (index !== -1) {
+                this.items.splice(index, 1);
+              }
+              return this.items;
+            }
+            
+            updatePriority({ text, newPriority }) {
+              const index = this.items.findIndex((item) => item.text === text);
+              if (index !== -1) {
+                this.items[index].priority = newPriority;
+              }
+            }
+        }
+          
+        const note1 = new Notes();
+        
+        note1.addNote({ text: 'Note1', priority: Notes.Priority().LOW });
+        note1.addNote({ text: 'Note2', priority: Notes.Priority().LOW });
+        note1.addNote({ text: 'Note3', priority: Notes.Priority().LOW });
+        note1.removeNote('Note2');
+        note1.updatePriority({ text: 'Note3', newPriority: Notes.Priority().HIGHT });
+        console.table(note1.items);
+    </pre>
+  </body>
+</html>

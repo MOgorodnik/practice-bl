@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 1</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 1</h2>
+    <pre>
+        const letMeSeeYourName = callback => {
+            const name = prompt("What is your name?");
+            if (!name) return;
+            
+            return callback(name);
+        }
+
+        const greet = name => console.log(`Привіт ${name}`)
+
+        letMeSeeYourName(greet);
+    </pre>
+  </body>
+</html>

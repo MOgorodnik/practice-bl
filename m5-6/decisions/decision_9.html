@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 9</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 9</h2>
+    <pre>
+        v1
+        function saveDiscount(discount) {
+            return function makeDiscount(sum) {
+                return sum - sum * (discount / 100);
+            };
+        }
+        
+
+        v2
+        const saveDiscount = d => {
+            return sum => {
+                return sum - sum * d / 100
+            }
+        }
+        
+        
+        v3
+        const saveDiscount = discount => sum => sum - sum * discount / 100;
+        
+        const discountSilver = saveDiscount(5);
+        const discountGold = saveDiscount(10);
+        const discountPlatinum = saveDiscount(15);
+        
+        console.log(discountSilver(1000));   // 950
+        console.log(discountGold(1000));     // 900
+        console.log(discountPlatinum(1000)); // 850
+    </pre>
+  </body>
+</html>

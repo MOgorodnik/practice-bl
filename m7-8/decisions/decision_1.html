@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 1</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 1</h2>
+    <ol>
+      <li>How to get el by id - short varant</li>
+      <li>listener on button</li>
+      <li>dot notation && notation constructor</li>
+      <li>getRandomHexColor(), for loop to show bug</li>
+      <li>add disabled attr or {once : true}</li>
+    </ol>
+    <hr>
+    <pre>
+      const btn = document.getElementById('js_btn');
+      const text = document.getElementById('js_text');
+      
+      console.log(1, js_btn, js_text);
+      console.log(2, btn, text);
+      
+      function removeAttr() {
+        this.disabled = false;
+      }
+      
+      btn.addEventListener(
+        'click',
+        (e) => {
+          e.currentTarget.disabled = true;
+          console.log('click');
+      
+          text.style['font-size'] = '34px';
+          text.style.fontFamily = 'Comic Sans MS';
+          text.style.color = 'tan';
+      
+          text.style.color = getRandomHexColor();
+      
+          setTimeout(removeAttr.bind(e.currentTarget), 2000);
+        } /* , {once : true} */
+      );
+      
+      const getRandomHexColor = () => {
+        return `#${Math.floor(Math.random() * 16777215)
+          .toString(16)
+          .padStart(6, 0)}`;
+      };
+      
+      for (let i = 0; i < 200; i++) {
+        console.log(getRandomHexColor());
+        console.log(getRandomHexColor().length);
+      }
+    </pre>
+  </body>
+</html>

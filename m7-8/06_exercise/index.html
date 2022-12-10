@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 6</title>
+    <style>
+      mark {
+        position: relative;
+      }
+
+      span.ttip {
+        border: 2px solid #f00;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        padding: 0 5px;
+        background: #ccc;
+      }
+
+      span.ttip:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 0;
+        height: 0;
+        top: 100%;
+        margin: 0 0 0 -5px;
+        border-width: 5px 5px 0;
+        border-style: solid;
+        border-color: #f00 transparent transparent transparent;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <a href="../index.html" class="p-5 block text-lg hover:text-indigo-500"
+      >&larr; Go Back</a
+    >
+
+    <hr class="border-x border-indigo-500" />
+
+    <div class="text-justify text-xl leading-8 w-96 p-8">
+      <p id="par">
+        Lorem
+        <mark data-hint="one">ipsum</mark> dolor sit amet
+        <mark data-hint="two">consectetur</mark> adipisicing elit.
+        <mark data-hint="three">Magni</mark>, nulla est. Qui
+        <mark data-hint="four">perspiciatis</mark> maxime delectus, libero quasi
+        <mark data-hint="five">impedit</mark> aliquam tempora.
+      </p>
+    </div>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

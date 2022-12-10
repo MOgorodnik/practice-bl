@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+    <style>
+      td {
+        padding: 0 10px;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <a href="../index.html" class="p-5 block text-lg hover:text-indigo-500"
+      >&larr; Go Back</a
+    >
+
+    <hr class="border-x border-indigo-500" />
+
+    <form id="form" class="w-80 py-4 mx-auto">
+      <fieldset class="grid grid-cols-5 gap-4 grid-flow-row">
+        <label for="row">
+          Row <br />
+          <input
+            id="row"
+            type="number"
+            value="0"
+            class="border border-indigo-500 px-2 w-full"
+          />
+        </label>
+        <label for="cell">
+          Cell <br />
+          <input
+            id="cell"
+            type="number"
+            value="0"
+            class="border border-indigo-500 px-2 w-full"
+          />
+        </label>
+        <label for="text" class="col-span-3">
+          New text<br />
+          <textarea
+            id="text"
+            class="border border-indigo-500 w-full"
+            placeholder="new content"
+          >update text</textarea>
+        </label>
+      </fieldset>
+      <button
+        id="btn"
+        type="submit"
+        class="bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-1 rounded my-5"
+      >
+        Change content
+      </button>
+    </form>
+
+    <table
+      id="table"
+      class="mx-auto table-fixed border-separate border-spacing-4 border border-slate-400"
+    >
+      <tr>
+        <td class="border border-slate-300">Row1 cell1</td>
+        <td class="border border-slate-300">Row1 cell2</td>
+      </tr>
+      <tr>
+        <td class="border border-slate-300">Row2 cell1</td>
+        <td class="border border-slate-300">Row2 cell2</td>
+      </tr>
+      <tr>
+        <td class="border border-slate-300">Row3 cell1</td>
+        <td class="border border-slate-300">Row3 cell2</td>
+      </tr>
+    </table>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

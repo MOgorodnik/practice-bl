@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 2</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 2</h2>
+    <pre>
+      const introduceForm = document.forms['introduce-form'];
+      const introduceFormIndex = document.forms[0];
+      
+      // console.log(introduceForm);
+      // console.log(introduceFormIndex);
+      
+      // const {fname: fnameInput, lname: lnameInput} = introduceForm.elements;
+      // console.log(fnameInput, lnameInput);
+      
+      const textInputs = introduceForm.querySelectorAll('[type="text"]');
+      // console.log(textInputs);
+      
+      const output = document.getElementById('output');
+      
+      (() => {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        console.log(userInfo);
+        if (userInfo) {
+          const { fname, lname } = userInfo;
+          introduceForm.elements.fname.value = fname;
+          introduceForm.elements.lname.value = lname;
+      
+          output.append(fname, ' ', lname);
+      
+          checkIsFieldsFilled(fname, lname);
+        } else {
+          const {
+            fname: { value: fname },
+            lname: { value: lname },
+          } = introduceForm.elements;
+          
+          output.append(fname, ' ', lname);
+      
+          checkIsFieldsFilled(fname, lname);
+        }
+      
+        //   output.append(fname, ' ', lname);
+      
+        //   checkIsFieldsFilled(fname, lname);
+      })();
+      
+      const onUpdateInputVal = (e) => {
+        const {
+          fname: { value: fname },
+          lname: { value: lname },
+        } = introduceForm.elements;
+        //   console.log(e, fname, lname);
+      
+        updateOutput(fname, lname);
+      
+        checkIsFieldsFilled(fname, lname);
+      
+        localStorage.setItem(
+          'userInfo',
+          JSON.stringify({ fname: fname, lname: lname })
+        );
+      };
+      
+      function updateOutput(fname, lname) {
+        output.innerHTML = `Greeting, ${
+          fname.charAt(0).toUpperCase() + fname.slice(1)
+        } ${lname.charAt(0).toUpperCase() + lname.slice(1)}`;
+      }
+      
+      function checkIsFieldsFilled(fname, lname) {
+        const btnSubmit = introduceForm.querySelector('[type="submit"]');
+        //   const {
+        //     fname: { value: fname },
+        //     lname: { value: lname },
+        //   } = introduceForm.elements;
+      
+        if (fname.trim() && lname.trim()) {
+          btnSubmit.disabled = false;
+        } else {
+          btnSubmit.disabled = true;
+        }
+        //   btnSubmit.disabled = fname.trim() && lname.trim() ? false : true
+      }
+      
+      for (const input of textInputs) {
+        input.addEventListener('input', onUpdateInputVal);
+        //   input.addEventListener('input', checkIsFieldsFilled);
+      }
+      
+      const onIntroduceFormSubmit = (e) => {
+        e.preventDefault();
+        const {
+          fname: { value: fname },
+          lname: { value: lname },
+        } = e.target.elements;
+      
+        if (!fname.trim() || !lname.trim()) {
+          console.log('Both fields should be filled!');
+          return;
+        }
+        console.log('submit', e, fname, lname.length);
+        e.target.reset();
+        localStorage.removeItem('userInfo');
+      };
+      
+      introduceForm.addEventListener('submit', onIntroduceFormSubmit);
+      
+    </pre>
+  </body>
+</html>

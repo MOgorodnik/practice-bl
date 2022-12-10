@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Decision: Task 5</title>
+    <meta name="description" content="https://www.telerik.com/blogs/debouncing-and-throttling-in-javascript">
+    <meta name="description" content="https://programmingwithmosh.com/javascript/javascript-throttle-and-debounce-patterns/">
+</head>
+<body>
+    <a href="index.html">Back</a><br>
+    <h2>Task 5</h2>
+    <pre>
+        const myLink = document.getElementById('my_link')
+        const items = Array.from(document.getElementsByTagName('strong'))
+        
+        function onMmouseOver() {
+            items.forEach(el => el.style.color = 'tan');
+            myLink.addEventListener('mouseleave', onMouseLeave)
+        }
+        
+        function onMouseLeave() {
+            items.forEach(el => el.style.color = 'black');
+            myLink.removeEventListener('mouseleave', onMouseLeave)
+        }
+        
+        function getRandomHexColor() {
+            return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
+        }
+        
+        function changeColor() {
+            const color = getRandomHexColor()
+            items.forEach(el => el.style.color = color);
+        }
+        
+        let timerId;
+        const  throttleFunction  =  function (func, delay) {
+            if (timerId) return
+        
+            timerId  =  setTimeout(function () {
+                func()
+                
+                timerId  =  undefined;
+            }, delay)
+        }
+        const debounceFunction  =  function (func, delay) {
+            clearTimeout(timerId)
+        
+            timerId  =  setTimeout(func, delay)
+        }
+        
+        myLink.addEventListener('mouseover', onMmouseOver)
+        myLink.addEventListener('mousemove', () => {
+            debounceFunction(changeColor, 400)
+            // throttleFunction(changeColor, 400)
+        })
+    </pre>
+</body>
+</html>

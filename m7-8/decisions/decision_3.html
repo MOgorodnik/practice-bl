@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 3</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 3</h2>
+    <pre>
+      const form = document.getElementById('form');
+      const table = document.getElementById('table');
+      
+      form.addEventListener('submit', onSubmit);
+      
+      function onSubmit(evt) {
+        evt.preventDefault();
+        const {
+          row: { value: rowVal },
+          cell: { value: cellVal },
+          text: { value: textVal },
+        } = form.elements;
+      
+        table.rows[Number(rowVal)].cells[Number(cellVal)].textContent = textVal;
+      }
+    </pre>
+  </body>
+</html>

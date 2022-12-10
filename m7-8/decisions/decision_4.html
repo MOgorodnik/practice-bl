@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Decision: Task 4</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a><br />
+    <h2>Task 4</h2>
+    <pre>
+    const img = document.getElementById('big_img');
+    const btn = document.getElementById('btn');
+    
+    function getRandomInt() {
+      return Math.floor(Math.random() * data.length);
+    }
+    
+    function onBtnclick() {
+      img.src = data[getRandomInt()];
+    }
+    
+    btn.addEventListener('click', onBtnclick);
+    
+    onBtnclick();
+    </pre>
+  </body>
+</html>

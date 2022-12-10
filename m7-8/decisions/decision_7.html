@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Decision: Task 7</title>
+</head>
+<body>
+    <a href="index.html">Back</a><br>
+    <h2>Task 7</h2>
+    <pre>
+      const ball = document.getElementById('ball')
+
+      let isDrag = false
+      
+      ball.addEventListener('mousedown', () => {isDrag = true})
+      document.addEventListener('mouseup', () => {isDrag = false})
+      
+      document.addEventListener('mousemove', e => {
+          if (isDrag) {
+              ball.style.top = (e.pageY - 20) + 'px';
+              ball.style.left = (e.pageX - 20) + 'px';
+          }
+      })
+    </pre>
+</body>
+</html>

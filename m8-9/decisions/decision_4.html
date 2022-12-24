@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Decision: Task 4</title>
+    </head>
+    <body>
+        <a href="index.html">Back</a><br />
+        <h2>Task 4</h2>
+        <pre>
+    part 1
+
+    let count = 0;
+    function counter() {
+        document.querySelector("span").innerHTML = count;
+        count++;      
+        setTimeout(counter, 1000) 
+    }
+    counter();
+
+    part 2
+
+    const refs = {
+        incBtn: document.querySelector('[data-action="increment"]'),
+        decBtn: document.querySelector('[data-action="decrement"]'),
+        stopBtn: document.querySelector('[data-action="stop"]'),
+        text: document.querySelector('span'),
+    };
+    let timerId = null;
+    
+    refs.incBtn.addEventListener('click', () => updateTime(1));
+    refs.decBtn.addEventListener('click', () => updateTime(-1));
+    refs.stopBtn.addEventListener('click', () => clearTimeout(timerId));
+    
+    function updateTime(val) {
+        refs.text.innerHTML = +refs.text.innerHTML + val;
+        timerId = setTimeout(() => updateTime(val), 1000);
+    }
+    </pre
+        >
+    </body>
+</html>

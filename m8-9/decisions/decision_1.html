@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Decision: Task 1</title>
+    </head>
+    <body>
+        <a href="index.html">Back</a><br />
+        <h2>Task 1</h2>
+
+        <hr />
+
+        <pre>
+function greet(val) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(val), 2000);
+    });
+}
+
+greet('hello world')
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err));
+
+console.log(`====================
+Script has been read. 
+Waiting the Promise.
+====================`);
+    </pre
+        >
+    </body>
+</html>

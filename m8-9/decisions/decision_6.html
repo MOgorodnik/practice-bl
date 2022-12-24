@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Decision: Task 6</title>
+    </head>
+    <body>
+        <a href="index.html">Back</a><br />
+        <h2>Task 6</h2>
+        <pre>
+    const startTimer = async (arr) => {
+        const newArr = arr.concat([...arr].reverse())
+        for (let item of newArr) {
+            await promise(item).then(res => console.log(res));
+        }
+    };
+
+    function promise(p) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => resolve(p), 400);
+        });
+    }
+
+    startTimer(['a', 'b', 'c', 'd', 'e', 'f']);
+    </pre
+        >
+    </body>
+</html>

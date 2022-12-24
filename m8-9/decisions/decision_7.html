@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Decision: Task 7</title>
+    </head>
+    <body>
+        <a href="index.html">Back</a><br />
+        <h2>Task 7</h2>
+        <pre>
+    const countWithDelay = (delay = 0, times = 0, stepInterval = 0) => {
+        for (let i = 1; i <= times; i++) {
+            myPromise(delay, i).then(logCount);
+            delay = delay + stepInterval;
+        }
+    };
+    
+    function myPromise(delay, step) {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(step), delay);
+        });
+    }
+    
+    function logCount(v) {
+        console.log(`logCount was called ${v} times`);
+    }
+    
+    countWithDelay(3000, 6, 1000);
+    </pre
+        >
+    </body>
+</html>

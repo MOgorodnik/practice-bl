@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Decision: Task 5</title>
+    </head>
+    <body>
+        <a href="index.html">Back</a><br />
+        <h2>Task 5</h2>
+        <pre>
+        // getData()
+        // .then((data) => {
+        //     arr.push(data);
+        //     return getNewData();
+        // })
+        // .then((data) => {
+        //     arr.push(data);
+        //     return getAnotherData();
+        // })
+        // .then((data) => {
+        //     arr.push(data);
+        //     return getLastData();
+        // })
+        // .then(data => {
+        //     arr.push(data);
+        //     console.log(arr);
+        // })
+        
+        Promise.all([getData(), getNewData(), getAnotherData(), getLastData()]).then(
+            (values) => {
+                console.log(values);
+            }
+        );      
+    </pre
+        >
+    </body>
+</html>

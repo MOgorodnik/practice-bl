@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Decision: Task 3</title>
+    </head>
+    <body>
+        <a href="index.html">Back</a><br />
+        <h2>Task 3</h2>
+        <pre>
+    const USER_DATA = {
+        email: 'user@ukr.io',
+        password: 'qwerty',
+    };
+    const LOCAL_LOGGED_USER = 'logged-user';
+    
+    const form = document.getElementById('login-form');
+    const { email, password, button } = form.elements;
+    
+    let isLocalLoggedUser = localStorage.getItem(LOCAL_LOGGED_USER);
+    if (isLocalLoggedUser) {
+        fillFormFromStorage(JSON.parse(isLocalLoggedUser))
+    }
+    
+    function fillFormFromStorage(data) {
+        for (const key in data) {
+            form.elements[key].value = data[key]
+        }
+        formElementsState()
+    }
+    
+    function formElementsState() {
+        isLocalLoggedUser = localStorage.getItem(LOCAL_LOGGED_USER);
+        button.textContent = isLocalLoggedUser ? 'Log Out' : 'Login';
+        Array.from(form.elements).forEach((el) => {
+            if (el.type !== 'submit') {
+                el.disabled = isLocalLoggedUser ? true : false;
+            }
+        });
+    }
+    
+    form.addEventListener('submit', onFormSubmit);
+    
+    function onFormSubmit(e) {
+        e.preventDefault();
+        const {
+            email: { value: typedEmail },
+            password: { value: typedPass },
+        } = e.currentTarget.elements;
+    
+        if (button.textContent.toLowerCase() === 'log out') {
+            localStorage.removeItem(LOCAL_LOGGED_USER)
+            e.target.reset()
+            formElementsState()
+            return
+        }
+    
+        if (typedEmail === USER_DATA.email && typedPass === USER_DATA.password) {
+            localStorage.setItem(
+                LOCAL_LOGGED_USER,
+                JSON.stringify({
+                    email: typedEmail,
+                    password: typedPass,
+                })
+            );
+        } else {
+            console.log('Error. Success denided!');
+        }
+        formElementsState()
+        // button.textContent = isLocalLoggedUser ? 'Log Out' : 'Login';
+        // Array.from(form.elements).forEach((el) => {
+        //     if (el.type !== 'submit') {
+        //         el.disabled = isLocalLoggedUser ? true : false;
+        //     }
+        // });
+    }
+    </pre
+        >
+    </body>
+</html>

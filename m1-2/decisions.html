@@ -1,86 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Document</title>
-    <style>details:not(:first-child){border-top: 1px solid #000;}summary{font-size: 18px;}pre{background: #e5e5e5;}</style>
-</head>
-<body>
-   <details>
+    <style>
+      details:not(:first-child) {
+        border-top: 1px solid #000;
+      }
+      summary {
+        font-size: 18px;
+      }
+      pre {
+        background: #e5e5e5;
+      }
+    </style>
+  </head>
+  <body>
+    <details open>
       <summary>Exercise 1</summary>
       <pre>
-         const question = prompt("Яка офіційна назва JavaScript?");
+        const question = prompt("Яка офіційна назва JavaScript?");
 
-         console.log(question, typeof question);
+        console.log(question, typeof question);
 
-         if (question === 'ECMAScript') {
-               alert('Вірно!');
-         } else {
-               alert('Не знаєте? ECMAScript!');
-         }
+        if (question === 'ECMAScript') {
+          alert('Вірно!');
+        } else {
+          alert('Не знаєте? ECMAScript!');
+        }
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 2</summary>
       <pre>
-         const globalMinutes = prompt('Введіть кількість хвилин, наприклад', 90);
-         const hours = Math.floor(globalMinutes / 60);
-         const modifiedHours = String(hours).padStart(2, 0);
-         const minutes = globalMinutes % 60;
-         const modifiedMinutes = String(minutes).padStart(2, 0);
-         
-         const time = `${modifiedHours}:${modifiedMinutes}`;
+        const globalMinutes = prompt('Введіть кількість хвилин, наприклад', 90);
+        const hours = Math.floor(globalMinutes / 60);
+        const modifiedHours = String(hours).padStart(2, 0);
+        const minutes = globalMinutes % 60;
+        const modifiedMinutes = String(minutes).padStart(2, 0);
+        
+        const time = `${modifiedHours}:${modifiedMinutes}`;
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 3</summary>
       <pre>
-         for (let i = max; i >= min; i--) {
-            console.log(i);
+        for (let i = max; i >= min; i--) {
+          console.log(i);
         }
         for (let i = min; i <= max; i++) {
-            if (i % 2 === 0) {
-                console.log(i);
-            } 
+          if (i % 2 === 0) {
+            console.log(i);
+          } 
         }
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 4</summary>
       <pre>
-         const max = 50;
-         const min = 0;
-         let total = 0;
-         for (let i = min; i <= max; i++) {
-               if (i % 2 !== 0) {
-                  continue;
-               }
-               total += i;
-         }
+        const max = 50;
+        const min = 0;
+        let total = 0;
+        for (let i = min; i <= max; i++) {
+          if (i % 2 !== 0) {
+            continue;
+          }
+          total += i;
+        }
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 5</summary>
       <pre>
          const loginInput = prompt("Введіть свій логін");
    
          if (loginInput === "admin") {
-               const passwordInput = prompt("Введіть свій пароль.");
-               if (passwordInput) {
-                  if (passwordInput === "password") {
-                  console.log("Здрастуйте");
-                  } else {
-                  console.log("Невірний пароль");
-                  }
-               } else {
-                  console.log("Скасовано");
-               }
+            const passwordInput = prompt("Введіть свій пароль.");
+            if (passwordInput) {
+              if (passwordInput === "password") {
+              console.log("Здрастуйте");
+              } else {
+              console.log("Невірний пароль");
+              }
+            } else {
+              console.log("Скасовано");
+            }
          } else {
-               console.log("Я вас не знаю");
+            console.log("Я вас не знаю");
          }
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 6</summary>
       <pre>
          let inputValue = prompt('Введіть число');
@@ -88,129 +98,129 @@
          let total = 0;
    
          do {
-               if (inputValue) {
-                  chech = true;
-                  total += Number(inputValue);
-                  inputValue = prompt("Введіть число");
-               } else {
-                  chech = false;
-                  alert(`Загальна сумма чисел дорівнює ${total}`);
-               }
+            if (inputValue) {
+              chech = true;
+              total += Number(inputValue);
+              inputValue = prompt("Введіть число");
+            } else {
+              chech = false;
+              alert(`Загальна сумма чисел дорівнює ${total}`);
+            }
          } while (chech);
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 7</summary>
       <pre>
-         let num = prompt('Enter number bigger then 100')
-         console.log(num, typeof num, num < 100);
-         let chech = true;
-         // while ((num < 100 || num === '') && num !== null) {
-         //     num = prompt('Enter number bigger then 100')
-         //     console.log(222, num, typeof num);
-         // }
-         
-         do {
-           if ((Number(num) < 100 || num === '') && num !== null) {
-               num = prompt("Введіть число більше 100");
-               console.log(555, num);
-             } else {
-               chech = false;
-             }
-         } while (chech);
-         console.log('Finnaly ', num);
+        let num = prompt('Enter number bigger then 100')
+        console.log(num, typeof num, num < 100);
+        let chech = true;
+        // while ((num < 100 || num === '') && num !== null) {
+        //     num = prompt('Enter number bigger then 100')
+        //     console.log(222, num, typeof num);
+        // }
+        
+        do {
+          if ((Number(num) < 100 || num === '') && num !== null) {
+              num = prompt("Введіть число більше 100");
+              console.log(555, num);
+            } else {
+              chech = false;
+            }
+        } while (chech);
+        console.log('Finnaly ', num);
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 8</summary>
       <pre>
-         const min = Math.floor(Math.random() * 59);;
-         if (min >= 0 && min <= 14) {
-               console.log("Перша чверть.");
-         }
-         if (min >= 15 && min <= 30) {
-               console.log("Друга чверть.");
-         }
-         if (min >= 31 && min <= 45) {
-               console.log("Третя чверть.");
-         }
-         if (min >= 46 && min <= 59) {
-               console.log("Четверта чверть.");
-         }
+        const min = Math.floor(Math.random() * 59);;
+        if (min >= 0 && min <= 14) {
+          console.log("Перша чверть.");
+        }
+        if (min >= 15 && min <= 30) {
+          console.log("Друга чверть.");
+        }
+        if (min >= 31 && min <= 45) {
+          console.log("Третя чверть.");
+        }
+        if (min >= 46 && min <= 59) {
+          console.log("Четверта чверть.");
+        }
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 9</summary>
       <pre>
-         const str = 'abcd'
-   
-         if (str.indexOf('a') === 0) {
-               console.log('Yes, "a" on the first position in the word.');
-         } else {
-               console.log('No, "a" not on the first position in the word.');
-         }
+        const str = 'abcd'
+  
+        if (str.indexOf('a') === 0) {
+          console.log('Yes, "a" on the first position in the word.');
+        } else {
+          console.log('No, "a" not on the first position in the word.');
+        }
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 10</summary>
       <pre>
-         const TAX = 5;
-         let sallary = prompt('Enter the amount of your salary in a month.', 3500);
-         let countOfMonth = +prompt('Enter the count of month.', 10);
-         let totalEarned = 0;
-         let totalAfterTax = 0;
-         
-         for (let i = countOfMonth; i > 0; i--) {
-             const taxAmount = sallary / 100 * 5
-             totalEarned += sallary - taxAmount;
-             totalAfterTax += taxAmount;
-         }
-         
-         console.log(`
-         You earned ${totalEarned} within ${countOfMonth} months, after-tax ${TAX}%
-         The total ammount of tax is ${totalAfterTax}.
-         `);
+        const TAX = 5;
+        let sallary = prompt('Enter the amount of your salary in a month.', 3500);
+        let countOfMonth = +prompt('Enter the count of month.', 10);
+        let totalEarned = 0;
+        let totalAfterTax = 0;
+        
+        for (let i = countOfMonth; i > 0; i--) {
+          const taxAmount = sallary / 100 * 5
+          totalEarned += sallary - taxAmount;
+          totalAfterTax += taxAmount;
+        }
+        
+        console.log(`
+        You earned ${totalEarned} within ${countOfMonth} months, after-tax ${TAX}%
+        The total ammount of tax is ${totalAfterTax}.
+        `);
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 11</summary>
       <pre>
-         const JS = 'js'
-         const PHP = 'php'
-         const JAVA = 'java'
-         const C_SHARP = 'c#'
-         const SWIFT = 'swift'
-         const PYTHON = 'python'
-         
-         const langName = `php`
-         
-         switch (langName.toLowerCase()) {
-             case PHP:
-                  console.log('Расмус Лердорф');
-                  break;
-             case C_SHARP:
-                  console.log(' група інженерів компанії Microsoft під керівництвом Андерса Хейлсберга та Скотта Вільтаумота');
-                  break;
-             case SWIFT:
-                  console.log('Кріс Латтнер');
-                  break;
-             case JS:
-                  console.log('Брендан Ейх');
-                  break;
-             case JAVA:
-                  console.log('Джеймс Гослінг');
-                  break;
-             case PYTHON:
-                  console.log('Гвідо ван Россум');
-                  break;
-         
-             default:
-                 console.log('We know nothing about this.');
-                 break;
-         }
+        const JS = 'js'
+        const PHP = 'php'
+        const JAVA = 'java'
+        const C_SHARP = 'c#'
+        const SWIFT = 'swift'
+        const PYTHON = 'python'
+        
+        const langName = `php`
+        
+        switch (langName.toLowerCase()) {
+          case PHP:
+            console.log('Расмус Лердорф');
+            break;
+          case C_SHARP:
+            console.log(' група інженерів компанії Microsoft під керівництвом Андерса Хейлсберга та Скотта Вільтаумота');
+            break;
+          case SWIFT:
+            console.log('Кріс Латтнер');
+            break;
+          case JS:
+            console.log('Брендан Ейх');
+            break;
+          case JAVA:
+            console.log('Джеймс Гослінг');
+            break;
+          case PYTHON:
+            console.log('Гвідо ван Россум');
+            break;
+      
+          default:
+            console.log('We know nothing about this.');
+            break;
+        }
       </pre>
-   </details>
-   <details>
+    </details>
+    <details open>
       <summary>Exercise 11</summary>
       <pre>
          const arr = ["BEST", "the", "foo", "is", "JS"]
@@ -223,6 +233,31 @@
          const concatedToStr = reversed.join(' ')
          console.log(concatedToStr);
       </pre>
-   </details>
-</body>
+    </details>
+
+    <pre>
+      <mark>
+        let array = [1, 2, 3, "hello world", 4.12, true];
+
+        // Slice
+        let newArray = array.slice(0, 3);   // Return value is also an array
+
+        console.log(newArray);
+        console.log(array);
+
+
+        // Splice
+        array.splice(2);
+        // array.splice(2, 1);
+        // array.splice(0, 0, 'a', 'b');
+        console.log(array);
+
+
+        // Split
+        let myString = array.toString();
+        let newArraySplit = myString.split(",", 3);
+        console.log('newArraySplit -> ', newArraySplit);
+      </mark>
+    </pre>
+  </body>
 </html>

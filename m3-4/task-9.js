@@ -1,11 +1,11 @@
 console.log('M 3-4: 9');
 
-// Task 8
+// Task 9
 // Перебрать об'екти та вивести ім'я кращого співробітника
 
-const findBestEmployee = data => {
+const findBestEmployee = (data) => {
   // code here
-}
+};
 
 console.log(
   findBestEmployee({
@@ -14,6 +14,19 @@ console.log(
     helen: 1,
     lorence: 99,
   })
-);
-// lorence
-
+); // lorence
+console.log(
+  findBestEmployee({
+    poly: 12,
+    mango: 17,
+    ajax: 4,
+  })
+); // mango
+console.log(
+  findBestEmployee({
+    lux: 147,
+    david: 21,
+    kiwi: 19,
+    chelsy: 38,
+  })
+); // lux

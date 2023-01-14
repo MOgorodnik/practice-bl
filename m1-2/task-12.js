@@ -1,5 +1,6 @@
-console.log('M 1-2: 9');
+console.log('M 1-2: 12');
 
+// 12.
 // Записати масив, const arr = ["BEST", "the", "foo", "is", "JS"]
 // Розгорнути масив,
 // вирізати foo,

@@ -17,7 +17,15 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    open: true,
+    // open: true,
+    open: {
+      target: ['index.html'],
+      // target: ['index.html', 'http://localhost:8080/second.html'],
+      app: {
+        name: 'chrome',
+        arguments: ['--incognito', '--new-window'],
+      },
+    },
     compress: false,
     hot: true,
     port: 8080,

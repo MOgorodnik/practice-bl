@@ -8,134 +8,20 @@
     />
   </head>
 
-  <body style="padding: 10px">
-    <!-- Завдання 1 -->
-    <h2>Завдання 1.</h2>
-    <p>
-      Створи функцію для отримання інформації про всі продукти з подальшим
-      рендером списку.
-    </p>
-    <ul id="allData"></ul>
-    <ul id="allProducts" class="row row-cols-5 g-3 ps-0"></ul>
-
-    <!-- Завдання 2 -->
-    <h2>Завдання 2.</h2>
-    <p>Реалізуй пошук та рендер інформації про продукт за його ID.</p>
-    <form id="singleProductForm">
-      <label for="id">Ввести ID продукта</label>
-      <input type="number" name="id" />
-      <button type="submit">Знайти</button>
-    </form>
-    <div id="singleProduct"></div>
-
-    <!-- Завдання 3 -->
-    <h2>Завдання 3.</h2>
-    <p>Створи та відрендери новий продукт.</p>
-    <form>
-      <label>Назва</label>
-      <input type="text" name="title" />
-
-      <label>Опис</label>
-      <input type="text" name="description" />
-
-      <label>Ціна</label>
-      <input type="number" name="price" />
-      <button type="submit">Додати</button>
-    </form>
-    <div id="newProductSection"></div>
-
+  <body class="p-4">
     <!-- Завдання 4 -->
     <h2>Завдання 4.</h2>
     <p>
-      Видаліть продукт за його ID. Якщо успішно, виведіть через alert SUCCESS та
-      інфо про видалений продукт, в іншому разі виведіть ERROR та причину
-      помилки.
+      Видаліть продукт за його ID. <br>
+      Якщо успішно, виведіть через alert SUCCESS та інфо про видалений продукт. <br>
+      В іншому разі виведіть ERROR та причину помилки.
     </p>
+
     <form id="deletionProductForm">
-      <label for="id">Введіть ID продукта для видалення</label>
-      <input type="number" name="deletionId" />
+      <label for="id">Введіть ID продукта для видалення</label> <br>
+      <input type="number" name="deletionId" value="2" />
       <button type="submit">Видалити</button>
     </form>
-
-    <!-- Завдання 5 -->
-    <h2>Завдання 5</h2>
-    <p>
-      Створи функцію для отримання інформації про всіх користувачів з подальшим
-      рендером списку.
-    </p>
-    <ul id="allUsers"></ul>
-
-    <!-- Завдання 6 -->
-    <h2>Завдання 6</h2>
-    <p>
-      Створи функцію для отримання інформації про всіх користувачів із
-      зазначеним у формі ім'ям та подальшим рендером списку.
-    </p>
-    <form id="userByNameForm">
-      <label for="id">Ввести ім'я</label>
-      <input type="text" name="name" />
-      <button type="submit">Знайти користувачів</button>
-    </form>
-    <ul id="usersByName"></ul>
-
-    <!-- Завдання 7 -->
-    <h2>Завдання 7</h2>
-    <p>Отримай і відрендери список карт за ID користувача.</p>
-    <form id="userCartsForm">
-      <label for="id">Ввести ID користувача для отримання карт</label>
-      <input type="number" name="userId" />
-      <button type="submit">Знайти</button>
-    </form>
-    <ul id="carts"></ul>
-
-    <!-- Завдання 8 -->
-    <h2>Завдання 8</h2>
-    <p>Отримай та відрендери список постів за ID користувача.</p>
-    <form id="userPostsForm">
-      <label for="id">Ввести ID користувача для отримання постів</label>
-      <input type="number" name="userId" />
-      <button type="submit">Знайти</button>
-    </form>
-    <ul id="posts"></ul>
-
-    <!-- Завдання 9 -->
-    <h2>Завдання 9</h2>
-    <p>Додай нового користувача та відобрази інформацію щодо нього.</p>
-    <form>
-      <label>Ім'я</label>
-      <input type="text" name="firstName" />
-
-      <label>Прізвище</label>
-      <input type="text" name="lastName" />
-
-      <label>Email</label>
-      <input type="email" name="email" />
-
-      <label>Пароль</label>
-      <input type="password" name="password" />
-      <button type="submit">Добавить користувача</button>
-    </form>
-    <div id="newUserSection"></div>
-
-    <!-- Завдання 10 -->
-    <h2>Завдання 10</h2>
-    <p>
-      Отримай список постів відфільтрованих за ключовим словом та відрендери
-      його.
-    </p>
-    <form id="filteredPostsForm">
-      <label for="id">Ввести ключове слово</label>
-      <input type="text" name="keyword" />
-      <button type="submit">Знайти посты</button>
-    </form>
-    <ul id="filteredPosts"></ul>
-
-    <!-- Завдання 11 -->
-    <h2>Завдання 11</h2>
-    <p>
-      Отримай список постів відфільтрованих за ключовим словом та відрендери
-      його.
-    </p>
-    <ul id="allPosts"></ul>
+    <div id="notification"></div>
   </body>
 </html>

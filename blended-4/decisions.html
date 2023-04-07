@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      details:not(:first-child) {
+        border-top: 1px solid #000;
+      }
+      summary {
+        font-size: 18px;
+      }
+      pre {
+        background: #e5e5e5;
+      }
+    </style>
+  </head>
+  <body>
+    <details open>
+      <summary>Exercise 1</summary>
+      <pre>
+        const alertButton = document.getElementById('alertButton')
+        const alertInput = document.getElementById('alertInput')
+
+        alertButton.addEventListener('click', () => console.log(alertInput.value))
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 2</summary>
+      <pre>
+        const swapBtn = document.getElementById("swapButton");
+        const leftSwapInput = document.getElementById("leftSwapInput");
+        const rightSwapInput = document.getElementById("rightSwapInput");
+        
+        swapBtn.addEventListener("click", () => {
+            const tmp = leftSwapInput.value;
+            leftSwapInput.value = rightSwapInput.value;
+            rightSwapInput.value = tmp;
+        })
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 3</summary>
+      <pre>
+        const VISIBLE = 'Приховати';
+        const HIDDEN = 'Розкрити';
+        const TYPE_TEXT = 'text';
+        const TYPE_PASSWORD = 'password';
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordButton = document.getElementById('passwordButton');
+        
+        passwordButton.addEventListener('click', togglePasswordShow);
+        
+        function togglePasswordShow(evt) {
+          const target = evt.target;
+          let btnText, inputType;
+        
+          btnText = target.textContent === VISIBLE ? HIDDEN : VISIBLE;
+          target.textContent = btnText;
+        
+          inputType = passwordInput.type === TYPE_TEXT ? TYPE_PASSWORD : TYPE_TEXT;
+          passwordInput.type = inputType;
+        }
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 4</summary>
+      <pre>
+        const box = document.getElementById('box');
+        const decrease = document.getElementById('decrease');
+        const increase = document.getElementById('increase');
+        const parentEl = document.querySelector('.task-4');
+        
+        parentEl.addEventListener('click', changeSize);
+        
+        let size = 0;
+        
+        function changeSize(evt) {
+          if (evt.target.nodeName !== 'BUTTON') return;
+          observer.observe(box);
+          if (evt.target.id === 'decrease') dec();
+          if (evt.target.id === 'increase') inc();
+        }
+        
+        function inc() {
+          const computedSize = box.getBoundingClientRect().width;
+          box.style.width = box.style.height = `${computedSize + 10}px`;
+        
+          //   box.style.width = box.style.height = `${size + 10}px`;
+        }
+        function dec() {
+          const computedSize = box.getBoundingClientRect().width;
+          box.style.width = box.style.height = `${computedSize - 10}px`;
+        
+          //   box.style.width = box.style.height = `${size - 10}px`;
+        }
+        
+        // `IntersectionObserver`
+        
+        const intersectionCallback = (entries) => {
+          entries.forEach((el) => {
+            size = el.boundingClientRect.width;
+          });
+        
+          observer.disconnect();
+        };
+        
+        const observer = new IntersectionObserver(intersectionCallback);
+        
+        observer.observe(box);
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 5</summary>
+      <pre>
+        const place = document.querySelector(`#place`);
+
+        window.addEventListener(`click`, checkClickPace);
+        
+        function checkClickPace(evt) {
+          if (evt.target.contains(place) && evt.target !== place) {
+            console.log('You clicked outside the place!');
+          } else {
+            console.log('You clicked inside the place!');
+          }
+        }
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 6</summary>
+      <pre>
+        const list = document.querySelector('.list');
+        const btn = document.querySelector('#double');
+        
+        btn.addEventListener('click', double);
+        
+        function double() {
+          // console.log(Array.from(list.children));
+          // console.log([...list.children]);
+          [...list.children].forEach((el) => {
+            el.textContent *= 2;
+          });
+        }
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 7</summary>
+      <pre>
+        outerCircle.addEventListener('click', startMove);
+
+        function startMove(e) {
+          innerCircle.style.position = 'absolute';
+          document.body.addEventListener(
+            'mousemove',
+            throttle((pevt) => {
+              innerCircle.style.top = pevt.clientY - 15 + 'px';
+              innerCircle.style.left = pevt.clientX - 15 + 'px';
+            }, 80)
+          );
+        
+          innerCircle.addEventListener('click', onInnerCircleClick);
+        }
+        
+        function onInnerCircleClick(e) {
+          e.stopImmediatePropagation();
+          e.currentTarget.style.position = 'static';
+          document.body.removeEventListener('mousemove', throttle);
+          e.currentTarget.removeEventListener('click', onInnerCircleClick);
+        }
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 8</summary>
+      <pre>
+        const statList = document.querySelector('.statList');
+        const resultSection = document.querySelector('#resultSection');
+        const resultButton = document.querySelector('#resultButton');
+        let total = 0;
+        
+        statList.addEventListener('click', onBtnClick);
+        resultButton.addEventListener('click', onResBtnClick);
+        
+        function onBtnClick(e) {
+          let el = e.target;
+          if (el.nodeName !== 'BUTTON') return;
+          total += +el.dataset.number;
+          el.dataset.countClicks = !el.dataset.countClicks
+            ? 1
+            : Number(el.dataset.countClicks) + 1;
+        }
+        
+        function onResBtnClick() {
+          // resultSection.textContent = total;
+          // const m = Array.from(statList.children).map((el, index) => `
+          // &lt;p>The Button#${index + 1} clecked ${el.dataset.countClicks || 0} times.&lt;/p>
+          // `).join('');
+          // resultSection.innerHTML += m
+
+          resultSection.innerHTML = Array.from(statList.children).reduce(
+            (acc, el, index) =>
+              acc.concat(`&lt;p>The Button#${index + 1} clecked &lt;mark> ${el.dataset.countClicks || 0} &lt;/mark> times.&lt;/p>`),
+            `&lt;p>The total is equal <b>&lt;mark> ${total} &lt;/mark> </b> &lt;/p>`
+          );
+        }
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 9</summary>
+      <pre>
+        const checkboxForm = document.forms.checkboxForm
+
+        function removeSelectedCheckbox(e) {
+          e.preventDefault();
+          [...checkboxForm.elements].forEach(el => {
+            if (el.type === 'checkbox' && el.checked) el.parentNode.remove()
+          });
+        }
+
+        checkboxForm.addEventListener('submit', removeSelectedCheckbox)
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 10</summary>
+      <pre>
+
+        const people = document.querySelector('ul.people');
+        const persons = people.children;
+        
+        const sortByNameButtonHandler = (e) => {
+          Array.from(persons)
+            .sort((a, b) => a.textContent.split(' ')[0].localeCompare(b.textContent.split(' ')[0]))
+            .forEach((li) => people.appendChild(li));
+        };
+        
+        const sortByLastNameButtonHandler = (e) => {
+          e.preventDefault()
+          Array.from(persons)
+            .sort((a, b) => a.textContent.split(' ')[1].localeCompare(b.textContent.split(' ')[1]))
+            .forEach((li) => people.appendChild(li));
+        };
+        
+        sortByNameButton.addEventListener('click', sortByNameButtonHandler);
+        sortByLastNameButton.addEventListener('click', sortByLastNameButtonHandler);
+
+        <mark>
+        const sortDataByPar = (evt, par) => {
+          evt.preventDefault();
+          Array.from(evt.currentTarget.children)
+          .sort((a, b) => a.textContent.split(' ')[par].localeCompare(b.textContent.split(' ')[par]))
+          .forEach(item => evt.currentTarget.appendChild(item));
+        }
+        
+        document.querySelector('.people').addEventListener('dblclick', e => sortDataByPar(e, 0))
+        document.querySelector('.people').addEventListener('contextmenu', e => sortDataByPar(e, 1))
+      </mark>
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 11</summary>
+      <pre>
+        const contactsFilterInput = document.querySelector('.contactsFilter');
+        const contactsList = document.querySelector('.contacts');
+
+        contactsFilterInput.addEventListener('input', onContactsFilterInput);
+
+        function onContactsFilterInput(e) {
+          const searchTerm = e.target.value.toLowerCase();
+          [...contactsList.children].forEach((contact) => {
+            const name = contact.textContent.toLowerCase();
+            if (name.includes(searchTerm)) {
+              contact.style.display = 'block';
+            } else {
+              contact.style.display = 'none';
+            }
+          });
+        }
+      </pre>
+    </details>
+    <details open>
+      <summary>Exercise 12</summary>
+      <pre>
+        const from = document.getElementById('from');
+        const to = document.getElementById('to');
+        const replaceButton = document.getElementById('replaceButton');
+        const text = document.querySelector('.task-12 .text');
+        
+        replaceButton.addEventListener('click', () => onReplaceButtonClick(text));
+        
+        function onReplaceButtonClick(data) {
+          const fromVal = from.value;
+          const toVal = to.value;
+        
+          if (fromVal === toVal || !fromVal || !toVal)
+            alert('Something wrong check your data please.');
+        
+          const pattern = new RegExp(`${fromVal}`, 'gi');
+          text.textContent = text.textContent.replace(pattern, toVal);
+        }
+      </pre>
+    </details>
+    </details>
+    <details open>
+      <summary>Exercise 13</summary>
+      <pre>
+        // &lt;li> під курсором в данний момент (якщо присутній)
+        let currentElem = null;
+        
+        grid.onmouseover = function(event) {
+          // перед тим, як увійти на наступний елемент, курсор завжди покидае попередній
+          // якщо currentElem є, то ми ще не вийшли з попереднього &lt;li>,
+          // це перехід всередині --- ігноруем таку подію
+          if (currentElem) return;
+        
+          let target = event.target.closest('li');
+        
+          // перехід не на &lt;li> --- ігноруємо
+          if (!target) return;
+        
+          // перехід на &lt;li>, але поза нашим списком (можливо при вкладених списках)
+          // --- ігноруємо
+          if (!grid.contains(target)) return;
+        
+          // ура, ми зайшли на новий &lt;li>
+          currentElem = target;
+          target.style.background = 'rgba(0,0,0,0)';
+        };
+               
+        grid.onmouseout = function(event) {
+          // якщо ми поза &lt;li>, то ігноруєм уход миші
+          // це якийсь перехід всередині списка, але поза &lt;li>,
+          // наприклад з &lt;li> на другий &lt;li>
+          if (!currentElem) return;
+        
+          // ми виходимо з елементу – але куди? Можливо, на потомка?
+          let relatedTarget = event.relatedTarget;
+        
+          while (relatedTarget) {
+            // поднімаємось по дереву елементів і перевіряємо – чи всередині ми currentElem чи ні
+            // якщо так, то це перехід всередині елемента --– ігноруємо
+            if (relatedTarget == currentElem) return;
+        
+            relatedTarget = relatedTarget.parentNode;
+          }
+        
+          // ми дійсно покинули элемент
+          currentElem.style.background = '';
+          currentElem = null;
+        };          
+      </pre>
+    </details>
+  </body>
+</html>

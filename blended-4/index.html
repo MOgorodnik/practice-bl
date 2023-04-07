@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blended-4. Practice.</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body style="position: relative; height: 100vh;">
+    <!-- Task 1 -->
+    <div class="task task-1" hidden>
+      <p class="taskTitle">Task 1</p>
+      <button id="alertButton">SHOW ME</button> <br />
+      <input id="alertInput" type="text" value="111" /> <br />
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task task-2" hidden>
+      <p class="taskTitle">Task 2</p>
+      <button id="swapButton">SWAP ME</button>
+      <input id="leftSwapInput" type="text" value="???" />
+      <input id="rightSwapInput" type="text" value="!!!" />
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task task-3" hidden>
+      <p class="taskTitle">Task 3</p>
+      <button id="passwordButton">Приховати</button>
+      <input id="passwordInput" type="text" value="qwerty" />
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task task-4" hidden>
+      <p class="taskTitle">Task 4</p>
+      <button id="decrease">Уменьшить</button>
+      <button id="increase">Увеличить</button>
+      <div id="box"></div>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="task task-5" hidden>
+      <p class="taskTitle">Task 5</p>
+      <div id="place"></div>
+    </div>
+
+    <!-- Task 6 -->
+    <div class="task task-6" hidden>
+      <p class="taskTitle">Task 6</p>
+      <ul class="list">
+        <li class="listItem">1</li>
+        <li class="listItem">4</li>
+        <li class="listItem">8</li>
+        <li class="listItem">16</li>
+        <li class="listItem">20</li>
+        <li class="listItem">30</li>
+      </ul>
+      <button id="double">Удвоить</button>
+    </div>
+
+    <!-- Task 7 -->
+    <div class="task task-7" hidden>
+      <p class="taskTitle">Task 7</p>
+      <div class="outerCircle">
+        <div class="innerCircle"></div>
+      </div>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="task task-8" hidden>
+      <p class="taskTitle">Task 8</p>
+      <div class="statList">
+        <button class="calcButton" data-number="5">Button #1 (+5)</button>
+        <button class="calcButton" data-number="2">Button #2 (+2)</button>
+        <button class="calcButton" data-number="10">Button #3 (+10)</button>
+        <button class="calcButton" data-number="50">Button #4 (+50)</button>
+        <button class="calcButton" data-number="0">Button #5 (+0)</button>
+        <button class="calcButton" data-number="20">Button #6 (+20)</button>
+      </div>
+      <button id="resultButton">Вывести результат</button>
+      <div id="resultSection"></div>
+    </div>
+
+    <!-- Task 9 -->
+    <div class="task task-9" hidden>
+      <p class="taskTitle">Task 9</p>
+      <form class="checkboxForm" name="checkboxForm">
+        <div class="checkboxList">
+          <div class="checkboxWrapper">
+            <label for="checkbox1">Item 1</label>
+            <input type="checkbox" id="checkbox1" checked />
+          </div>
+          <div class="checkboxWrapper">
+            <label for="checkbox2">Item 2</label>
+            <input type="checkbox" id="checkbox2" />
+          </div>
+          <div class="checkboxWrapper">
+            <label for="checkbox3">Item 3</label>
+            <input type="checkbox" id="checkbox3" checked />
+          </div>
+          <div class="checkboxWrapper">
+            <label for="checkbox4">Item 4</label>
+            <input type="checkbox" id="checkbox4" />
+          </div>
+          <div class="checkboxWrapper">
+            <label for="checkbox5">Item 5</label>
+            <input type="checkbox" id="checkbox5" />
+          </div>
+          <div class="checkboxWrapper">
+            <label for="checkbox6">Item 6</label>
+            <input type="checkbox" id="checkbox6" />
+          </div>
+          <div class="checkboxWrapper">
+            <label for="checkbox7">Item 7</label>
+            <input type="checkbox" id="checkbox7" />
+          </div>
+        </div>
+        <button type="submit">Filter</button>
+      </form>
+    </div>
+
+    <!-- Task 10 -->
+    <div class="task task-10" hidden>
+      <p class="taskTitle">Task 10</p>
+      <ul class="people">
+        <li class="person">Peter Miller</li>
+        <li class="person">John Carter</li>
+        <li class="person">Amanda Diaz</li>
+        <li class="person">Brad Sanders</li>
+        <li class="person">Devis Brooks</li>
+        <li class="person">Robert Morgan</li>
+      </ul>
+      <button id="sortByNameButton" type="button">Sort by name</button>
+      <button id="sortByLastNameButton" type="button">Sort by lastname</button>
+    </div>
+
+    <!-- Task 11 -->
+    <div class="task task-11" hidden>
+      <p class="taskTitle">Task 11</p>
+      <input class="contactsFilter" type="text" />
+      <ul class="contacts">
+        <li class="contact">Peter Miller</li>
+        <li class="contact">John Carter</li>
+        <li class="contact">Amanda Diaz</li>
+        <li class="contact">Brad Sanders</li>
+        <li class="contact">Devis Brooks</li>
+        <li class="contact">Robert Morgan</li>
+      </ul>
+    </div>
+    <!-- https://htmldom.dev/sort-a-table-by-clicking-its-headers/ -->
+
+    <!-- Task 12 -->
+    <div class="task task-12" hidden>
+      <p class="taskTitle">Task 12</p>
+      <input id="from" type="text" value="a" />
+      <input id="to" type="text" value="aaa"/>
+      <button id="replaceButton">Replace</button>
+      <hr>
+      <p class="text">
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It
+        has roots in a piece of classical Latin literature from 45 BC, making it
+        over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney College in Virginia, looked up one of the more obscure
+        Latin words, consectetur, from a Lorem Ipsum passage, and going through
+        the cites of the word in classical literature, discovered the
+        undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
+        of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+        Cicero, written in 45 BC. This book is a treatise on the theory of
+        ethics, very popular during the Renaissance. The first line of Lorem
+        Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+        1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is
+        reproduced below for those interested. Sections 1.10.32 and 1.10.33 from
+        "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their
+        exact original form, accompanied by English versions from the 1914
+        translation by H. Rackham.
+      </p>
+    </div>
+
+    <!-- Task 13 -->
+    <div class="task task-13" hidden>
+      <p class="taskTitle">Task 13</p>
+      <ul class="grid">
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+        <li class="gridItem"></li>
+      </ul>
+    </div>
+
+    <script src="task-13.js" type="module"></script>
+    <script>
+      const show = document
+        .querySelector('script')
+        .getAttribute('src')
+        .split('.')[0];
+      document.querySelector(`.${show}`).hidden = false;
+    </script>
+  </body>
+</html>

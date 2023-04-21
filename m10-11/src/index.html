@@ -9,14 +9,20 @@
   </head>
 
   <body class="p-4">
-    <!-- Завдання 5 -->
-    <h2>Завдання 5</h2>
-    
+    <!-- Завдання 6 -->
+    <h2>Завдання 6</h2>
+
     <p>
-      Створи функцію для отримання інформації про всіх користувачів з подальшим
-      рендером списку.
+      Створи функцію для отримання інформації про всіх користувачів із
+      зазначеним в формі ім'ям <br />
+      та подальшим рендером списку.
     </p>
 
-    <ul id="allUsers" class="row row-cols-3 g-2"></ul>
+    <form id="userByNameForm" class="mb-3">
+      <label for="id">Ввести ім'я</label> <br>
+      <input type="text" name="name" class="mb-2" value="Jo" /> <br>
+      <button type="submit">Знайти користувачів</button>
+    </form>
+    <ul id="usersByName" class="row row-cols-md-2 g-2 ps-0"></ul>
   </body>
 </html>

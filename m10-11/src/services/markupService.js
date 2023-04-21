@@ -1,7 +1,13 @@
-const cardProduct = require('../templates/card-user.hbs');
+const cardProduct = require('../templates/users-list.hbs');
+const notFoundMessage = require('../templates/not-found-message.hbs');
 
-function renderUsers(el, data) {
+function renderUsersListByName(el, data) {
   const markup = cardProduct(data);
+  el.insertAdjacentHTML('beforeend', markup);
+}
+
+function renderNotFoundMessage(el) {
+  const markup = notFoundMessage("Не знайдено жодного користувача з таким ім'ям. Спробуйте інше.");
   el.insertAdjacentHTML('beforeend', markup);
 }
 
@@ -17,6 +23,7 @@ function htmlizeResponse(res) {
 }
 
 export default {
-  renderUsers,
+  renderUsersListByName,
   renderError,
+  renderNotFoundMessage,
 };

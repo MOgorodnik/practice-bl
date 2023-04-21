@@ -4,3 +4,9 @@
 ul, div {
     margin-bottom: 100px;
 } */
+
+.bi {
+    width: 1em;
+    height: 1em;
+    fill: currentcolor;
+}

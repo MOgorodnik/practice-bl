@@ -1,0 +1,32 @@
+{{#each this}}
+  <div class='col'>
+    <div class='card'>
+      <div class='row g-0'>
+        <div class='col-md-4'>
+          <img
+            src='{{image}}'
+            class='img-fluid rounded-start'
+            alt='{{firstName}} {{lastName}} {{maidenName}}'
+          />
+        </div>
+        <div class='col-md-8'>
+          <div class='card-body'>
+            <h5 class='card-title'>
+              <div class='alert alert-info float-md-end d-none d-md-block'>
+                Age
+                <span class='badge text-bg-light'>{{age}}</span>
+              </div>
+
+              <p>{{firstName}} {{lastName}} {{maidenName}}</p>
+            </h5>
+            <p class='card-text'>{{city}}
+              <small class='text-muted'>{{postalCode}}</small></p>
+            <p class='alert alert-warning'><b>Company</b>
+              &ndash;
+              {{companyName}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}

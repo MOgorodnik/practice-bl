@@ -1,0 +1,23 @@
+{{#each this}}
+  <div class='col'>
+    <div class='card h-100'>
+      <img
+        src='{{image}}'
+        class='card-img-top'
+        alt='{{firstName}} {{lastName}}'
+      />
+      <div class='card-body'>
+        <h5 class='card-title'>{{firstName}} {{lastName}}</h5>
+        <p class='card-text'>
+          {{address.city}} {{address.state}}<br> {{address.address}} <br> {{address.postalCode}}
+        </p>
+      </div>
+      <ul class='list-group list-group-flush'>
+        <li class='list-group-item'>{{gender}}</li>
+        <li class='list-group-item'>{{email}}</li>
+        <li class='list-group-item'>{{phone}}</li>
+        <li class='list-group-item'>{{username}}</li>
+      </ul>
+    </div>
+  </div>
+{{/each}}

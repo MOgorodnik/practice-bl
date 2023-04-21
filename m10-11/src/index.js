@@ -25,11 +25,24 @@ async function getAllUsersByName(e) {
     // when res is empty array
     if (!res.length) {
       markupService.renderNotFoundMessage(usersByName);
-      return
+      return;
     }
 
     // when res is filled array
     markupService.renderUsersListByName(usersByName, res);
+    usersByName.addEventListener('click', function (e) {
+      console.log(e.target, e.currentTarget);
+      // Перевіряємо, чи клікнули на елемент <a> або його внутрішні елементи
+      if (
+        e.target.matches('.card.text-decoration-none') ||
+        e.target.matches('.card.text-decoration-none *')
+      ) {
+        e.preventDefault();
+
+        const linkURL = new URL(e.target.closest('a').href);
+        console.log(88888888888889, parseInt(linkURL.pathname.match(/\d+/)[0], 10));
+      }
+    });
   } catch (err) {
     // on Error
     markupService.renderError(usersByName, err);

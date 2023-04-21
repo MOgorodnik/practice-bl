@@ -19,10 +19,27 @@
     </p>
 
     <form id="userByNameForm" class="mb-3">
-      <label for="id">Ввести ім'я</label> <br>
-      <input type="text" name="name" class="mb-2" value="Jo" /> <br>
+      <label for="id">Ввести ім'я</label> <br />
+      <input type="text" name="name" class="mb-2" value="Jo" /> <br />
       <button type="submit">Знайти користувачів</button>
     </form>
-    <ul id="usersByName" class="row row-cols-md-2 g-2 ps-0"></ul>
+    <div class="row">
+      <div class="col-5">
+        <ul id="usersByName" class="row row-cols-1 g-2 ps-0"></ul>
+      </div>
+      <div class="col-7">
+        
+      </div>
+    </div>
+
+    <!-- Завдання 7 -->
+    <h2>Завдання 7</h2>
+    <p>Отримай і відрендери список карт за ID користувача.</p>
+    <form id="userCartsForm">
+      <label for="id">Ввести ID користувача для отримання карт</label>
+      <input type="number" name="userId" />
+      <button type="submit">Знайти</button>
+    </form>
+    <ul id="carts"></ul>
   </body>
 </html>

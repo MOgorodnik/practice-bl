@@ -1,4 +1,4 @@
-const cardProduct = require('../templates/users-list.hbs');
+const cardProduct = require('../templates/users-list-sm.hbs');
 const notFoundMessage = require('../templates/not-found-message.hbs');
 
 function renderUsersListByName(el, data) {

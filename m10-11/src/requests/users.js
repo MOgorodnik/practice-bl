@@ -13,6 +13,7 @@ async function getAllUsersByName(query) {
 
 function doNormalize(data) {
   return data.map((el) => ({
+    id: el.id,
     firstName: el.firstName,
     lastName: el.lastName,
     maidenName: el.maidenName,

@@ -22,6 +22,26 @@
     }
 
     startTimer(['a', 'b', 'c', 'd', 'e', 'f']);
+
+    or
+
+    const startTimer = async (arr) => {
+        let index = 0;
+        let reverse = false;
+        const logElement = () => {
+          console.log(arr[index]);
+          if (index === arr.length - 1) {
+            reverse = true;
+          } else if (index === 0 && reverse) {
+            clearInterval(intervalId);
+          }
+          index = reverse ? index - 1 : index + 1;
+        };
+        const intervalId = setInterval(logElement, 1000);
+    };
+      
+    startTimer(['a', 'b', 'c', 'd', 'e', 'f']);
+      
     </pre
         >
     </body>

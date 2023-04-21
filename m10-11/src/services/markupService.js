@@ -1,9 +1,9 @@
-const cardSingleProduct = require('../templates/card-single-product.hbs');
+const cardNewProduct = require('../templates/card-new-product.hbs');
 
-function renderSingleProduct(el, data) {
+function renderNewProduct(el, data) {
   console.log(el, data);
 
-  const markup = cardSingleProduct(data);
+  const markup = cardNewProduct(data);
   el.insertAdjacentHTML('beforeend', markup);
 }
 
@@ -20,5 +20,5 @@ function htmlizeResponse(res) {
 
 export default {
   renderError,
-  renderSingleProduct,
+  renderNewProduct,
 };

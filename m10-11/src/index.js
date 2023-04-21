@@ -15,9 +15,9 @@ import markupService from './services/markupService';
 
 const form = document.getElementById('newProductSectionForm');
 
-form.addEventListener('submit', onFormsubmit);
+form.addEventListener('submit', onFormSubmit);
 
-function onFormsubmit(e) {
+function onFormSubmit(e) {
   e.preventDefault();
   const { title, description, price } = e.currentTarget.elements;
 
@@ -60,7 +60,7 @@ async function addAndDrawNewProduct(form) {
     const res = await requests.addNewProduct(productParams);
 
     // render on success
-    markupService.renderSingleProduct(newProductSection, res.data)
+    markupService.renderNewProduct(newProductSection, res.data)
   } catch (err) {
     // render on error
     markupService.renderError(newProductSection, err)

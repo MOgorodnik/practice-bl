@@ -5,11 +5,14 @@ import API from '../services/api';
 // })
 
 async function deleteProduct(id) {
-  return await API.dummyjson.delete(`/products/${id}`);
-  // try {
-  // } catch (error) {
-  //   throw new Error(error.message)
-  // }
+  console.log('deleteProduct(id)', id);
+  try {
+    return await API.dummyjson.delete(`/products/${id}`);
+  } catch (error) {
+    throw new Error(
+      JSON.stringify({ name: error.name, message: error.response.data.message })
+    );
+  }
 }
 
 export default {

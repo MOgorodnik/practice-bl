@@ -1,5 +1,13 @@
+const cardDeletedProduct = require('../templates/card-deleted-product.hbs');
+
+function renderDeletedProduct(el, data) {
+  console.log('renderDeletedProduct', el);
+
+  const markup = cardDeletedProduct(data);
+  el.innerHTML = markup;
+}
+
 function renderError(el, data) {
-  console.log(22222, data);
   el.classList.remove('row', 'row-cols-5', 'g-3');
   el.innerHTML = htmlizeResponse(data);
 }
@@ -12,4 +20,5 @@ function htmlizeResponse(res) {
 
 export default {
   renderError,
+  renderDeletedProduct,
 };

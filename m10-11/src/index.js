@@ -6,9 +6,9 @@ import markupService from './services/markupService';
 
 const form = document.getElementById('deletionProductForm');
 
-form.addEventListener('submit', onFormsubmit);
+form.addEventListener('submit', onFormSubmit);
 
-function onFormsubmit(e) {
+function onFormSubmit(e) {
   e.preventDefault();
   const { deletionId } = e.currentTarget.elements;
 
@@ -22,11 +22,15 @@ function onFormsubmit(e) {
 
 async function deleteProduct(id) {
   try {
+    // response
     const res = await requests.deleteProduct(id);
 
+    // render on success
     console.log('success');
+    markupService.renderDeletedProduct(notification, res.data);
   } catch (err) {
+    // render on error
     console.log('I catch', err);
-    markupService.renderError(notification, JSON.parse(`{"name": "${err.name}","message": "${err.message}"}`));
+    markupService.renderError(notification, JSON.parse(err.message));
   }
 }
